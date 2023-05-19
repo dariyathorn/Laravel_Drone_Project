@@ -42,4 +42,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    public static function store($request, $id= null){
+        $user = $request->only([
+            'name', 'email', 'password'
+        ]);
+        $user = self::updateOrCreate(['id' => $id], $user);
+        return $user;
+    }
 }
