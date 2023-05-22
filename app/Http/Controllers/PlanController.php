@@ -20,7 +20,9 @@ class PlanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $plan = Plan::store($request);
+        return response()->json(['success'=> true, 'data'=>$plan], 200);
+
     }
 
     /**

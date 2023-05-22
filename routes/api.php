@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\PlanController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -28,3 +30,11 @@ Route::delete('users/{id}',[UserController::class, 'destroy']);
 
 
 Route::post('role', [RoleController::class, 'store']);
+Route::post('register', [AuthenticationController::class, 'register']);
+Route::post('login', [AuthenticationController::class, 'login']);
+Route::post('logout', [AuthenticationController::class, 'logout']);
+
+
+Route::post('plans', [PlanController::class, 'store']);
+
+
