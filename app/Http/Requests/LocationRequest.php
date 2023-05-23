@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class MapRequest extends FormRequest
+class LocationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -19,7 +19,6 @@ class MapRequest extends FormRequest
     {
         throw new HttpResponseException(response()->json(['success' => false, 'message' => $validator->errors()], 402));
     }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -28,8 +27,8 @@ class MapRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'image'=>'required',
-            'quality'=>'required',
+            'latitude'=>'required',
+            'longitude'=>'required',
         ];
     }
 }
