@@ -1,7 +1,11 @@
 <?php
 
+<<<<<<< HEAD
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\LocationController;
+=======
+use App\Http\Controllers\DroneController;
+>>>>>>> 8d4ed1f8becfd11ad7a60f0ad56b3ba535511ddf
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -23,6 +27,18 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/plans', [PlanController::class,'index']);
+Route::post('/plan', [PlanController::class,'store']);
+Route::get('/plan/{id}', [PlanController::class,'show']);
+Route::put('/plan/{id}', [PlanController::class,'update']);
+Route::delete('/plan/{id}', [PlanController::class,'destroy']);
+
+Route::get('/drones',[DroneController::class, 'index']);
+Route::post('/drone',[DroneController::class, 'store']);
+Route::get('/drone/{id}',[DroneController::class, 'show']);
+Route::put('/drone/{id}',[DroneController::class, 'update']);
+Route::delete('/drone/{id}',[DroneController::class, 'destroy']);
 
 Route::get('users',[UserController::class, 'index']);
 Route::post('users',[UserController::class, 'store']);

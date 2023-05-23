@@ -12,7 +12,7 @@ class MapController extends Controller
      */
     public function index()
     {
-        //
+        $map = Map::all();
     }
 
     /**
