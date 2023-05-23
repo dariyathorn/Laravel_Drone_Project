@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Plan extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'type',
         'date_time',
@@ -33,4 +34,23 @@ class Plan extends Model
     public function drones():HasMany{
         return $this->hasMany(Drone::class);
     }
+
+
+    // public static function store($request, $id = null){
+    //     $plan = $request->only(
+    //         'type',
+    //         'date_time',
+    //         'area',
+    //         'density',
+    //     );
+    //     $plan = self::updateOrCreate(['id'=>$id], $plan);
+    //     return $plan;
+    // }
+    // public function drone():BelongsTo
+    // {
+    //     return $this->belongsTo(Drone::class);
+    // }
+    
+
+   
 }

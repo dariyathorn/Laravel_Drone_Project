@@ -26,6 +26,7 @@ class PlanResuorce extends JsonResource
             'users'=>$this->user,
             'location'=>$this->location,
             'drones'=>$this->drones
+            // 'map'=>$this->map,
         ];
     }
 }

@@ -55,4 +55,8 @@ class User extends Authenticatable
     public function plans():HasMany{
         return $this->hasMany(Plan::class);
     }
+    public function drones():HasMany
+    {
+        return $this->hasMany(Drone::class);
+    }
 }

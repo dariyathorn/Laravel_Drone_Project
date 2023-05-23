@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class DroneRequest extends FormRequest
+class LocationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -19,7 +19,6 @@ class DroneRequest extends FormRequest
     {
         throw new HttpResponseException(response()->json(['success' => false, 'message' => $validator->errors()], 402));
     }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -28,13 +27,8 @@ class DroneRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'=>'required',
-            'category'=>'required',
-            'description'=>'required',
-            'bettery'=>'required',
-            'payload'=>'required',
-            'plan_id'=>'required',
-            'user_id'=>'required',
+            'latitude'=>'required',
+            'longitude'=>'required',
         ];
     }
 }
