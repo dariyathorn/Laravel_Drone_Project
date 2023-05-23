@@ -18,6 +18,8 @@ class DroneResource extends JsonResource
             'name'=>$this->name,
             'category'=>$this->category,
             'description'=>$this->description,
+            'bettery'=>$this->bettery,
+            'payload'=>$this->payload,
         ];
     }
 }

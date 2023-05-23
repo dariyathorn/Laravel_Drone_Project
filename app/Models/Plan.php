@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Plan extends Model
 {
@@ -33,10 +34,7 @@ class Plan extends Model
         }
         return $plan;
     }
-    public function drones()
-    {
-        return $this->belongsToMany(Drone::class, 'drone_plans')->withTimestamps();
-    }
+    
 
    
 }

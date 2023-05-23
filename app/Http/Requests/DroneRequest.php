@@ -31,6 +31,8 @@ class DroneRequest extends FormRequest
             'name'=>'required',
             'category'=>'required',
             'description'=>'required',
+            'bettery'=>'required',
+            'payload'=>'required',
         ];
     }
 }

@@ -13,6 +13,8 @@ class Drone extends Model
         'name',
         'category',
         'description',
+        'bettery',
+        'payload',
     ];
 
     public static function store($request, $id = null){
@@ -20,6 +22,8 @@ class Drone extends Model
             'name',
             'category',
             'description',
+            'bettery',
+            'payload',
         );
         if($id){
             $drone = self::updateOrCreate(['id'=>$id], $drone);
@@ -32,8 +36,12 @@ class Drone extends Model
         return $drone;
     }
     
-    public function plans()
+    // public function plans()
+    // {
+    //     return $this->belongsToMany(Plan::class, 'drone_plans')->withTimestamps();
+    // }
+    public function plans():HasMany
     {
-        return $this->belongsToMany(Plan::class, 'drone_plans')->withTimestamps();
+        return $this->hasMany(Plan::class)->withTimestamps();
     }
 }
