@@ -23,6 +23,7 @@ class PlanResuorce extends JsonResource
             'date_time'=>$this->date_time,
             'area'=>$this->area,
             'density'=>$this->density,
+            'map'=>$this->map,
         ];
     }
 }

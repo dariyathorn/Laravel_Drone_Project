@@ -18,6 +18,8 @@ return new class extends Migration
             $table->text('description');
             $table->string('bettery');
             $table->string('payload');
+            $table->unsignedBigInteger("user_id");
+            $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade");
             $table->timestamps();
         });
     }

@@ -4,8 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Map extends Model
 {
@@ -15,6 +14,7 @@ class Map extends Model
         'image',
         'quality',
         'location_id',
+        'drone_id',
     ];
 
     public static function store($request, $id = null){
@@ -22,16 +22,17 @@ class Map extends Model
             'image',
             'quality',
             'location_id',
+            'drone_id',
         );
         $map = self::updateOrCreate(['id'=>$id], $map);
         return $map;
     }
-    public function locations():BelongsToMany
+    public function locations():BelongsTo
     {
-        return $this->belongsToMany(Location::class);
+        return $this->belongsTo(Location::class);
     }
-    public function drone():BelongsToMany
+    public function drone():BelongsTo
     {
-        return $this->belongsToMany(Drone::class);
+        return $this->belongsTo(Drone::class, 'drone_id');
     }
 }

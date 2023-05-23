@@ -15,9 +15,9 @@ class MapController extends Controller
     public function index()
     {
         // dd(23);
-        $map = Map::all();
-        $map = MapResource::collection($map);
-        return response()->json(['success'=>true, 'data' =>$map], 200);
+        $maps = Map::all();
+        $maps = MapResource::collection($maps);
+        return response()->json(['success'=>true, 'data' =>$maps], 200);
     }
 
     /**
@@ -26,8 +26,8 @@ class MapController extends Controller
     public function store(MapRequest $request)
     {
         // dd(234);
-        $map = Map::store($request);
-        return response()->json(['success'=>true, 'data' =>$map], 200);
+        $maps = Map::store($request);
+        return response()->json(['success'=>true, 'data' =>$maps], 200);
     }
 
     /**
@@ -36,8 +36,8 @@ class MapController extends Controller
     public function show(string $id)
     {
         // dd(90);
-        $map = Map::find($id);
-        return response()->json(['success'=>true, 'data' =>$map], 200);
+        $maps = Map::find($id);
+        return response()->json(['success'=>true, 'data' =>$maps], 200);
     }
 
     /**
@@ -45,8 +45,8 @@ class MapController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $map = Map::store($request, $id);
-        return response()->json(['success'=>true, 'data' =>$map], 200);
+        $maps = Map::store($request, $id);
+        return response()->json(['success'=>true, 'data' =>$maps], 200);
     }
 
     /**
@@ -54,8 +54,8 @@ class MapController extends Controller
      */
     public function destroy(string $id)
     {
-        $map =Map::find($id);
-        $map->delete();
-        return response()->json(['success'=>true, 'data' =>$map], 200);
+        $maps =Map::find($id);
+        $maps->delete();
+        return response()->json(['success'=>true, 'data' =>$maps], 200);
     }
 }

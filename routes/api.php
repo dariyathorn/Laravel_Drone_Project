@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\DroneController;
+use App\Http\Controllers\MapController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -55,4 +56,8 @@ Route::post('plans', [PlanController::class, 'store']);
 
 Route::post('locations', [LocationController::class, 'store']);
 
-
+Route::get('/maps', [MapController::class, 'index']);
+Route::post('/map', [MapController::class, 'store']);
+Route::get('/map/{id}', [MapController::class, 'show']);
+Route::put('/map/{id}', [MapController::class, 'update']);
+Route::delete('/map/{id}', [MapController::class, 'destroy']);

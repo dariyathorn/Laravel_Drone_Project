@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Plan extends Model
 {
     use HasFactory;
-<<<<<<< HEAD
 
     protected $fillable = [
         'type',
@@ -27,9 +27,11 @@ class Plan extends Model
         $plan = self::updateOrCreate(['id'=>$id], $plan);
         return $plan;
     }
+    public function drone():BelongsTo
+    {
+        return $this->belongsTo(Drone::class);
+    }
     
 
    
-=======
->>>>>>> eeaaf1f913a678c427d8e3b895728d5bb61ac040
 }

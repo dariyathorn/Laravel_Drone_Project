@@ -30,6 +30,7 @@ class MapRequest extends FormRequest
         return [
             'image'=>'required',
             'quality'=>'required',
+            'drone_id'=>'required',
         ];
     }
 }
