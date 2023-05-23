@@ -32,6 +32,8 @@ class PlanRequest extends FormRequest
             'date_time'=>"required",
             'area'=>"required",
             'density'=>"required",
+            'user_id'=>"required",
+            'location_id'=>"required",
         ];
     }
 }

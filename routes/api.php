@@ -1,11 +1,8 @@
 <?php
 
-<<<<<<< HEAD
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\LocationController;
-=======
 use App\Http\Controllers\DroneController;
->>>>>>> 8d4ed1f8becfd11ad7a60f0ad56b3ba535511ddf
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -35,7 +32,7 @@ Route::put('/plan/{id}', [PlanController::class,'update']);
 Route::delete('/plan/{id}', [PlanController::class,'destroy']);
 
 Route::get('/drones',[DroneController::class, 'index']);
-Route::post('/drone',[DroneController::class, 'store']);
+Route::post('/drones',[DroneController::class, 'store']);
 Route::get('/drone/{id}',[DroneController::class, 'show']);
 Route::put('/drone/{id}',[DroneController::class, 'update']);
 Route::delete('/drone/{id}',[DroneController::class, 'destroy']);
@@ -53,7 +50,6 @@ Route::post('login', [AuthenticationController::class, 'login']);
 Route::post('logout', [AuthenticationController::class, 'logout']);
 
 
-Route::post('plans', [PlanController::class, 'store']);
 
 
 Route::post('locations', [LocationController::class, 'store']);

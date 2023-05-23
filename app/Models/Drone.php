@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Drone extends Model
 {
@@ -15,24 +16,12 @@ class Drone extends Model
         'description',
         'bettery',
         'payload',
+        'plan_id'
     ];
 
     public static function store($request, $id = null){
-        $drone = $request->only(
-            'name',
-            'category',
-            'description',
-            'bettery',
-            'payload',
-        );
-        if($id){
-            $drone = self::updateOrCreate(['id'=>$id], $drone);
-
-        }
-        else{
-            $drone = self::create($drone);
-            $id = $drone->id;
-        }
+        $drone = $request->only('name','category','description','bettery','payload','plan_id');
+        $drone = self::updateOrCreate(['id'=>$id], $drone);
         return $drone;
     }
     
@@ -40,8 +29,8 @@ class Drone extends Model
     // {
     //     return $this->belongsToMany(Plan::class, 'drone_plans')->withTimestamps();
     // }
-    public function plans():HasMany
+    public function plan()
     {
-        return $this->hasMany(Plan::class)->withTimestamps();
+        return $this->belongsTo(Plan::class);
     }
 }

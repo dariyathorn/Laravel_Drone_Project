@@ -33,6 +33,7 @@ class DroneRequest extends FormRequest
             'description'=>'required',
             'bettery'=>'required',
             'payload'=>'required',
+            'plan_id'=>'required',
         ];
     }
 }
