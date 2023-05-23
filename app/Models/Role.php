@@ -9,10 +9,10 @@ class Role extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'role'
+        'name'
     ];
     public static function store($request, $id = null){
-        $role = $request->only(['role']);
+        $role = $request->only(['name']);
         $role = self::updateOrCreate(['id'=>$id],$role);
         return $role;
     }

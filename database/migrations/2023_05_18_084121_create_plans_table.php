@@ -17,6 +17,12 @@ return new class extends Migration
             $table->dateTime('date_time');
             $table->string('area');
             $table->integer('density');
+            $table->unsignedBigInteger('user_id')->references('id')->on('users')
+            ->onDelete('cascade');
+            $table->unsignedBigInteger('location_id')->references('id')->on('locations')
+            ->onDelete('cascade');
+            $table->unsignedBigInteger('drone_id')->references('id')->on('drones')
+            ->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -37,8 +37,9 @@ class UserController extends Controller
         if (!$user){
             return response()->json(['message'=>'Not find iD '.$id],404);
         };
+        $token = $user->createToken('API Token')->plainTextToken;
         $user = new UserResource($user);
-        return response()->json(['success'=> true, 'data'=>$user], 200);
+        return response()->json(['success'=> true, 'data'=>$user, 'token'=>$token], 200);
 
     }
 
@@ -62,4 +63,5 @@ class UserController extends Controller
         return response()->json(['success'=> true, 'data'=>$user], 200);
 
     }
+    
 }

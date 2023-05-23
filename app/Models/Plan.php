@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Plan extends Model
 {
     use HasFactory;
+<<<<<<< HEAD
 
     protected $fillable = [
         'type',
@@ -29,4 +30,6 @@ class Plan extends Model
     
 
    
+=======
+>>>>>>> eeaaf1f913a678c427d8e3b895728d5bb61ac040
 }

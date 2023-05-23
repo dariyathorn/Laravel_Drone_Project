@@ -22,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role_id'
     ];
 
     /**
@@ -45,10 +46,14 @@ class User extends Authenticatable
     ];
     public static function store($request, $id= null){
         $user = $request->only([
-            'name', 'email', 'password'
+            'name', 'email', 'password','role_id'
         ]);
         $user = self::updateOrCreate(['id' => $id], $user);
         return $user;
+        
+    }
+    public function plans():HasMany{
+        return $this->hasMany(Plan::class);
     }
     public function drones():HasMany
     {
