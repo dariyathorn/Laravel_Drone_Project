@@ -3,11 +3,11 @@
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\DroneController;
+use App\Http\Controllers\InstructionController;
 use App\Http\Controllers\MapController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
-use App\Models\Location;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -45,6 +45,7 @@ Route::put('users/{id}',[UserController::class, 'update']);
 Route::delete('users/{id}',[UserController::class, 'destroy']);
 
 
+Route::get('/roles',[RoleController::class, 'index']);
 Route::post('role', [RoleController::class, 'store']);
 Route::post('register', [AuthenticationController::class, 'register']);
 Route::post('login', [AuthenticationController::class, 'login']);
@@ -52,7 +53,7 @@ Route::post('logout', [AuthenticationController::class, 'logout']);
 
 
 
-
+Route::get('locations', [LocationController::class, 'index']);
 Route::post('locations', [LocationController::class, 'store']);
 
 Route::get('/maps', [MapController::class, 'index']);
@@ -60,3 +61,10 @@ Route::post('/map', [MapController::class, 'store']);
 Route::get('/map/{id}', [MapController::class, 'show']);
 Route::put('/map/{id}', [MapController::class, 'update']);
 Route::delete('/map/{id}', [MapController::class, 'destroy']);
+
+
+Route::get('/instructions', [InstructionController::class, 'index']);
+Route::post('/instruction', [InstructionController::class, 'store']);
+Route::get('/instruction/{id}', [InstructionController::class, 'show']);
+Route::put('/instruction/{id}', [InstructionController::class, 'update']);
+Route::delete('/instruction/{id}', [InstructionController::class, 'destroy']);
