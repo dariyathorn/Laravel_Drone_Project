@@ -25,7 +25,6 @@ class AuthenticationController extends Controller
     }
     public function logout(Request $request)
     {
-        dd($request->user());
         $request->user()->tokens()->delete();
         return response()->json(['message' => 'Logged out successfully']);
     }
@@ -40,7 +39,7 @@ class AuthenticationController extends Controller
         if ($user->name == 'admin') {
             $token = $user->createToken('ADMIN-TOKEN', ['select', 'create', 'update', 'delete']);
         } else {
-            $token = $user->createToken("USER-TOKEN", ['select','create', 'update']);
+            $token = $user->createToken("USER-TOKEN", ['select']);
         }
 
 

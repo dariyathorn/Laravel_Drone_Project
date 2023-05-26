@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\MapRequest;
 use App\Http\Resources\MapResource;
+use App\Models\Farm;
 use App\Models\Map;
 use Illuminate\Http\Request;
 
@@ -57,5 +58,44 @@ class MapController extends Controller
         $maps =Map::find($id);
         $maps->delete();
         return response()->json(['success'=>true, 'data' =>$maps], 200);
+    }
+    public function DownloadImage($name, $farm_id){
+        $map = Map::where('name', $name)->first();
+        if (!isset($map)){
+            return response()->json(['success'=>false, 'message' =>'Can not found'.$name], 200);
+        }
+        $farms = Farm::where('id', $farm_id)->first();
+        if (empty($farms)){
+            return response()->json(['success'=>false, 'message' =>'Can not found'.$farm_id], 404);
+        }
+        return response()->json(['success' => true, 'message' => 'Download image successfully', 'data' =>$map->image], 200);
+    }
+
+    public function DeleteImage($name, $farm_id){
+        $map = Map::where('name', $name)->first();
+        if (!isset($map)){
+            return response()->json(['success'=>false, 'message' =>'Can not found'.$name], 200);
+        }
+        $farms = Farm::where('id', $farm_id)->first();
+        if (empty($farms)){
+            return response()->json(['success'=>false, 'message' =>'Can not found'.$farm_id], 404);
+        }
+        $map->image= "null" ;
+        $map->save();
+        return response()->json(['success' => true, 'message' => 'Delete image successfully'], 200);
+    }
+    
+    public function addImage($name, $farm_id){
+        $map = Map::where('name', $name)->first();
+        if (!isset($map)){
+            return response()->json(['success'=>false, 'message' =>'Can not found'.$name], 200);
+        }
+        $farms = Farm::where('id', $farm_id)->first();
+        if (empty($farms)){
+            return response()->json(['success'=>false, 'message' =>'Can not found'.$farm_id], 404);
+        }
+        $map->image = request('image');
+        $map->save();
+        return response()->json(['success' => true, 'message' => 'Request farm successfully', 'data' =>$map->image], 200);
     }
 }

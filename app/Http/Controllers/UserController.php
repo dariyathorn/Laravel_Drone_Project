@@ -22,9 +22,16 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
+        // dd(1);
         $user = User::store($request);
+        // $token = null;
+        // if ($user->name == 'admin') {
+        //     $token = $user->createToken('ADMIN-TOKEN', ['select', 'create', 'update', 'delete']);
+        // } else {
+        //     $token = $user->createToken("USER-TOKEN", ['select','create', 'update','delete']);
+        // }
+        // return response()->json(['success' =>true, 'data' => $user,'token' => $token],201);
         return response()->json(['success'=> true, 'data'=>$user], 200);
     }
 

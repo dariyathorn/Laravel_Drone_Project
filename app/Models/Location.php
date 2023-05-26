@@ -22,6 +22,10 @@ class Location extends Model
     public function plan(): HasOne{
         return $this->hasOne(Plan::class);
     }
+    public function drone(): HasOne{
+        return $this->hasOne(Drone::class);
+    }
+
     
     
 }

@@ -40,6 +40,7 @@ class PlanController extends Controller
     public function show(string $id)
     {
         $plan = Plan::find($id);
+        $plan = new PlanResuorce($plan);
         return response()->json(['success'=>true, 'data' =>$plan], 200);
     }
 

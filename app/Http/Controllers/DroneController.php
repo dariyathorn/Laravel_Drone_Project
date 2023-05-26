@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\DroneRequest;
+use App\Http\Resources\DroneLocationResource;
 use App\Http\Resources\DroneResource;
+use App\Http\Resources\ShowDroneResource;
 use App\Models\Drone;
 use Illuminate\Http\Request;
 
@@ -14,8 +16,8 @@ class DroneController extends Controller
      */
     public function index()
     {
-        // dd(23);
         $drone = Drone::all();
+        // dd($drone);
         $drone = DroneResource::collection($drone);
         return response()->json(['success'=>true, 'data' =>$drone], 200);
     }
@@ -25,18 +27,20 @@ class DroneController extends Controller
      */
     public function store(DroneRequest $request)
     {
-        // dd(234);
         $drone = Drone::store($request);
+        // dd($drone);
         return response()->json(['success'=>true, 'data' =>$drone], 200);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        // dd(90);
         $drone = Drone::find($id);
+        dd($id);
+        
+        $drone = new DroneResource($drone);
         return response()->json(['success'=>true, 'data' =>$drone], 200);
     }
 
@@ -57,5 +61,12 @@ class DroneController extends Controller
         $drone =Drone::find($id);
         $drone->delete();
         return response()->json(['success'=>true, 'data' =>$drone], 200);
+    }
+
+    public function locationDrone($id){
+        $drone = Drone::find($id);
+        $drone = new DroneLocationResource($drone);
+        return response()->json(['success'=>true, 'data' =>$drone], 200);
+        
     }
 }

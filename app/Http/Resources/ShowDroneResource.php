@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class DroneResource extends JsonResource
+class ShowDroneResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -21,8 +21,8 @@ class DroneResource extends JsonResource
             'description'=>$this->description,
             'bettery'=>$this->bettery,
             'payload'=>$this->payload,
-            'plane'=>$this->drones
-            // 'user_id'=>$this->user,
+            'location'=>$this->drones
+            // 'location'=>PlanResuorce::collection($this->location),
         ];
     }
 }

@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class LocationResource extends JsonResource
+class DroneLocationResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,10 +15,12 @@ class LocationResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            // 'id'=>$this->id,
-            'latitude'=>$this->latitude,
-            'longitude'=>$this->longitude,
-            // 'map'=>$this->map,
+            'name'=>$this->name,
+            'location'=> [
+                'latitude'=>$this->location->latitude, 
+                'longitude'=>$this->location->longitude
+            ],
+            
         ];
     }
 }

@@ -13,10 +13,13 @@ return new class extends Migration
     {
         Schema::create('maps', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->string('image');
             $table->string('quality');
-            $table->unsignedBigInteger("drone_id");
-            $table->foreign("drone_id")->references("id")->on("drones")->onDelete("cascade");
+            $table->unsignedBigInteger("location_id");
+            $table->foreign("location_id")->references("id")->on("locations")->onDelete("cascade");
+            $table->unsignedBigInteger("farm_id");
+            $table->foreign("farm_id")->references("id")->on("farms")->onDelete("cascade");
             $table->timestamps();
         });
     }
