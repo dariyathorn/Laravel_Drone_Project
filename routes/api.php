@@ -3,12 +3,10 @@
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\DroneController;
-use App\Http\Controllers\FarmController;
 use App\Http\Controllers\MapController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
-use App\Models\Location;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -63,13 +61,14 @@ Route::put('users/{id}',[UserController::class, 'update']);
 Route::delete('users/{id}',[UserController::class, 'destroy']);
 
 
+Route::get('/roles',[RoleController::class, 'index']);
 Route::post('role', [RoleController::class, 'store']);
 Route::post('register', [AuthenticationController::class, 'register']);
 Route::post('login', [AuthenticationController::class, 'login']);
 
 
 
-
+Route::get('locations', [LocationController::class, 'index']);
 Route::post('locations', [LocationController::class, 'store']);
 
 Route::post('/map', [MapController::class, 'store']);
@@ -77,15 +76,3 @@ Route::get('/maps', [MapController::class, 'index']);
 Route::get('/map/{id}', [MapController::class, 'show']);
 Route::put('/map/{id}', [MapController::class, 'update']);
 Route::delete('/map/{id}', [MapController::class, 'destroy']);
-
-Route::get('/drones/{name}',[DroneController::class, 'locationDrone']);
-
-
-Route::post('/maps/{name}/{id}',[MapController::class, 'addImage']);
-Route::get('/maps/{name}/{id}',[MapController::class, 'DownloadImage']);
-Route::delete('/maps/{name}/{id}',[MapController::class, 'DeleteImage']);
-
-
-Route::post('/farms',[FarmController::class, 'store']);
-
-

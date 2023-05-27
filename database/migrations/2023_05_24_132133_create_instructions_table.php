@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('instructions', function (Blueprint $table) {
             $table->id();
+            $table->datetime('date_start');
+            $table->datetime('date_end');
+            $table->string('action');
+            $table->string('throttle');
+            $table->unsignedBigInteger("user_id");
+            $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade");
+
+            $table->unsignedBigInteger("drone_id");
+            $table->foreign("drone_id")->references("id")->on("drones")->onDelete("cascade");
             $table->timestamps();
         });
     }
