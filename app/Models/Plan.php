@@ -24,8 +24,8 @@ class Plan extends Model
     public static function store($request, $id = null){
         $plan = $request->only(['type','date_time','area','density','user_id','location_id']);
         $plan = self::updateOrCreate(['id'=>$id], $plan);
-        $plans = request('drones');
-        $plan->drones()->sync($plans);
+        // $plans = request('drones');
+        // $plan->drones()->sync($plans);
         return $plan ;
     }
     public function user():BelongsTo{
@@ -37,6 +37,10 @@ class Plan extends Model
     public function drones():BelongsToMany{
         return $this->belongsToMany(Drone::class, 'plan_drones')->withTimestamps();
     }
+    public function insturctions():HasMany{
+        return $this->hasMany(PlanDrone::class);
+    }
+
 
 
     // public static function store($request, $id = null){

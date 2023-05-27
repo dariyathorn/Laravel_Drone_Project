@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PlanDroneResource;
 use App\Models\PlanDrone;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,11 @@ class PlanDroneController extends Controller
      */
     public function index()
     {
-        //
+        $insturction = PlanDrone::all();
+        // dd($insturction);
+        $insturction = PlanDroneResource::collection($insturction);
+        return response()->json(['success'=>true, 'data' =>$insturction], 200);
+
     }
 
     /**
@@ -20,7 +25,9 @@ class PlanDroneController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $insturction = PlanDrone::store($request);
+        return response()->json(['success'=>true, 'data' =>$insturction], 200);
+
     }
 
     /**

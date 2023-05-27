@@ -3,8 +3,10 @@
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\DroneController;
+use App\Http\Controllers\FarmController;
 use App\Http\Controllers\MapController;
 use App\Http\Controllers\PlanController;
+use App\Http\Controllers\PlanDroneController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -29,20 +31,20 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::middleware(['auth:sanctum'])->group(function () {
    
     Route::delete('/drone/{id}',[DroneController::class, 'destroy']);
-
+    Route::put('/drones/{id}',[DroneController::class, 'update']);
     
-
+    
+    
     
     
     Route::post('logout', [AuthenticationController::class, 'logout']);
     
 });
 
+Route::get('/drones',[DroneController::class, 'index']);
 Route::post('/drones',[DroneController::class, 'store']);
 
-Route::get('/drones',[DroneController::class, 'index']);
 Route::get('/drones/{id}',[DroneController::class, 'show']);
-Route::put('/drones/{id}',[DroneController::class, 'update']);
 
 Route::get('/droneLocation/{id}',[DroneController::class, 'locationDrone']);
 
@@ -76,3 +78,16 @@ Route::get('/maps', [MapController::class, 'index']);
 Route::get('/map/{id}', [MapController::class, 'show']);
 Route::put('/map/{id}', [MapController::class, 'update']);
 Route::delete('/map/{id}', [MapController::class, 'destroy']);
+
+
+Route::get('/maps/{name}/{id}', [MapController::class, 'DownloadImage']);
+Route::delete('/maps/{name}/{id}', [MapController::class, 'DownloadImage']);
+Route::post('/maps/{name}/{id}', [MapController::class, 'DownloadImage']);
+
+Route::post('/plans/{type}', [PlanController::class, 'getPlan']);
+
+
+Route::get('/insturctions', [PlanDroneController::class, 'index']);
+Route::post('/insturctions', [PlanDroneController::class, 'store']);
+
+Route::post('/farms', [FarmController::class, 'store']);

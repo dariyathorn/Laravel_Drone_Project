@@ -62,4 +62,11 @@ class PlanController extends Controller
         $plan -> delete();
         return response()->json(['success'=>true, 'data' =>$plan], 200);
     }
+
+    public function getPlan($type){
+        $plan = Plan::all();
+        $plan = Plan::where('type', 'like', "%".$type."%");
+        $plan = PlanResuorce::collection($plan);
+        return response()->json(['success'=>true, 'data' =>$plan], 200);
+    }
 }

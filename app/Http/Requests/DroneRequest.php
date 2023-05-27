@@ -34,7 +34,8 @@ class DroneRequest extends FormRequest
             'bettery'=>'required',
             'payload'=>'required',
             'user_id'=>'required',
-            'location_id'=>'required'
+            'location_id'=>'required',
+            'map_id'=>'required',
         ];
     }
 }
