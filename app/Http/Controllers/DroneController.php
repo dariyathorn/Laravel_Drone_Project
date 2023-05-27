@@ -38,8 +38,6 @@ class DroneController extends Controller
     public function show($id)
     {
         $drone = Drone::find($id);
-        // dd($id);
-        
         $drone = new DroneResource($drone);
         return response()->json(['success'=>true, 'data' =>$drone], 200);
     }
@@ -50,6 +48,9 @@ class DroneController extends Controller
     public function update(Request $request, string $id)
     {
         $drone = Drone::store($request, $id);
+        if (!$drone){
+            return response()->json(['success'=>true, 'message' =>'Can not find drone ID '.$id], 404);
+        }
         return response()->json(['success'=>true, 'data' =>$drone], 200);
     }
 
@@ -65,6 +66,9 @@ class DroneController extends Controller
 
     public function locationDrone($id){
         $drone = Drone::find($id);
+        if (!$drone){
+            return response()->json(['success'=>false, 'message' =>'Can not found '.$id], 404);
+        }
         $drone = new DroneLocationResource($drone);
         return response()->json(['success'=>true, 'data' =>$drone], 200);
         

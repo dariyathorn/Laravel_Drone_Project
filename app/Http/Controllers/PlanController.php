@@ -14,7 +14,6 @@ class PlanController extends Controller
      */
     public function index()
     {
-        // dd(1234);
         $plan = Plan::all();
         $plan = PlanResuorce::collection($plan);
         return response()->json(['success'=>true, 'data' =>$plan], 200);
@@ -40,6 +39,9 @@ class PlanController extends Controller
     public function show(string $id)
     {
         $plan = Plan::find($id);
+        if (!$plan){
+            return response()->json(['success'=>true, 'message' => 'Can not found '.$plan], 200);
+        }
         $plan = new PlanResuorce($plan);
         return response()->json(['success'=>true, 'data' =>$plan], 200);
     }
@@ -66,6 +68,7 @@ class PlanController extends Controller
     public function getPlan($type){
         $plan = Plan::all();
         $plan = Plan::where('type', 'like', "%".$type."%");
+        dd($plan);
         $plan = PlanResuorce::collection($plan);
         return response()->json(['success'=>true, 'data' =>$plan], 200);
     }

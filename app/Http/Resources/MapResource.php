@@ -18,7 +18,6 @@ class MapResource extends JsonResource
             'id'=>$this->id,
             'image'=>$this->image,
             'quality'=>$this->quality,
-            'drone_id'=>$this->drone,
         ];
     }
 }
