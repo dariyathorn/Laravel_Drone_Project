@@ -90,4 +90,5 @@ Route::post('/plans/{type}', [PlanController::class, 'getPlan']);
 Route::get('/insturctions', [PlanDroneController::class, 'index']);
 Route::post('/insturctions', [PlanDroneController::class, 'store']);
 
+Route::get('/farms',[FarmController::class, 'index']);
 Route::post('/farms', [FarmController::class, 'store']);

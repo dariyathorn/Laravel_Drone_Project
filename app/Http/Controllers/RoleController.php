@@ -13,7 +13,9 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        $role = Role::all();
+        $role = RoleResource::collection($role);
+        return response()->json(['success'=>true, 'date'=>$role]);
     }
 
     /**
